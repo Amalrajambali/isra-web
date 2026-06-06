@@ -48,7 +48,7 @@ export function BoutiqueLocator() {
         </div>
 
         <button
-          onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=Isra+Ethnic+Thekkummuri+Tirur", "_blank")}
+          onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=Isra+CHURIDAR & SAREES+Thekkummuri+Tirur", "_blank")}
           className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold hover:bg-primary/90 transition-all hover:translate-y-[-2px] active:translate-y-0 shadow-lg"
         >
           <Navigation className="h-5 w-5" />

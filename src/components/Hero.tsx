@@ -1,15 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { PlaceHolderImages } from "@/app/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
-  const heroImg = PlaceHolderImages.find((p) => p.id === "hero-saree");
-
   return (
-    <section className="relative h-[90vh] w-full flex items-center overflow-hidden bg-accent/30">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+    <section className="relative h-[90vh] w-full flex items-center overflow-hidden bg-[#f6eee3]">
+      <Image
+        src="/hero-product.png"
+        alt="Hero background for Isra Ethnic"
+        fill
+        priority
+        className="object-cover pointer-events-none select-none"
+        style={{ objectPosition: "72% 12%" }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#f8f1e6] via-[#f8f1e6]/70 to-transparent" />
+
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-8 animate-fade-in">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-3 rounded-full border border-primary/20 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm">
@@ -40,22 +48,7 @@ export function Hero() {
             </Button>
           </div>
         </div>
-
-        <div className="hidden lg:block relative h-[70vh] w-full rounded-2xl overflow-hidden shadow-2xl animate-fade-in" style={{ animationDelay: "200ms" }}>
-          {heroImg && (
-            <Image
-              src={heroImg.imageUrl}
-              alt={heroImg.description}
-              fill
-              priority
-              className="object-cover"
-              data-ai-hint={heroImg.imageHint}
-            />
-          )}
-        </div>
       </div>
-
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/20 -z-0 skew-x-12 transform translate-x-20 hidden lg:block" />
     </section>
   );
 }
