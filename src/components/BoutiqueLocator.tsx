@@ -9,7 +9,7 @@ export function BoutiqueLocator() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div className="space-y-8">
         <div>
-          <h2 className="font-headline text-4xl mb-4 text-primary">Visit Our Boutique</h2>
+          <h2 className="font-headline text-4xl mb-4 text-primary">Visit Us</h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Experience the luxury of our collections in person. Our boutique in Tirur offers a curated selection of sarees and churidars with personalized styling assistance.
           </p>
@@ -31,9 +31,8 @@ export function BoutiqueLocator() {
               <Clock className="h-6 w-6 text-primary" />
             </div>
             <div>
-              <h4 className="font-bold text-xl mb-1">Boutique Hours</h4>
-              <p className="text-muted-foreground">Mon - Sat: 10:00 AM - 8:30 PM</p>
-              <p className="text-muted-foreground">Sun: 11:00 AM - 7:00 PM</p>
+              <h4 className="font-bold text-xl mb-1">Business Hours</h4>
+              <p className="text-muted-foreground">Mon - Sat: 10:00 AM - 7:30 PM</p>
             </div>
           </div>
 

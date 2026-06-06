@@ -19,7 +19,7 @@ function WhatsAppIcon() {
 
 export function ContactButtons() {
   const whatsappNumber = "8113081120";
-  const callNumber = "9961264495";
+  const callNumber = "8113081120";
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">

@@ -88,7 +88,7 @@ export default function Home() {
             </div>
 
             <div className="text-center text-xs text-muted-foreground tracking-[0.2em] uppercase">
-              (c) {new Date().getFullYear()} Isra Ethnic. Crafted for the elegant.
+              (c) {new Date().getFullYear()} Isra Churidars & Sarees. Crafted for the elegant. Social: Isra Ethnic.
             </div>
 
             <div className="hidden md:block text-right text-[11px] uppercase tracking-[0.25em] text-muted-foreground">

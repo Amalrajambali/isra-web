@@ -4,8 +4,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Isra Ethnic | Luxury Churidars & Sarees',
-  description: 'Explore the finest collection of luxury sarees and designer churidars at Isra Ethnic. Boutique ethnic wear from Tirur.',
+  title: 'Isra Churidars & Sarees | Isra Ethnic',
+  description: 'Explore the finest collection of luxury sarees and designer churidars at Isra Churidars & Sarees, known online as Isra Ethnic. Boutique ethnic wear from Tirur.',
 };
 
 export default function RootLayout({
