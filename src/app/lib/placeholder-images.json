@@ -1,0 +1,65 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-saree",
+      "description": "Elegant luxury silk saree draped on a model",
+      "imageUrl": "https://picsum.photos/seed/12/1200/800",
+      "imageHint": "luxury saree"
+    },
+    {
+      "id": "catalog-1",
+      "description": "Floral pattern designer saree",
+      "imageUrl": "https://picsum.photos/seed/101/600/900",
+      "imageHint": "floral saree"
+    },
+    {
+      "id": "catalog-2",
+      "description": "Traditional gold bordered silk saree",
+      "imageUrl": "https://picsum.photos/seed/102/600/700",
+      "imageHint": "silk saree"
+    },
+    {
+      "id": "catalog-3",
+      "description": "Modern designer churidar suit",
+      "imageUrl": "https://picsum.photos/seed/103/600/850",
+      "imageHint": "churidar suit"
+    },
+    {
+      "id": "catalog-4",
+      "description": "Ethnic embroidery work",
+      "imageUrl": "https://picsum.photos/seed/104/600/600",
+      "imageHint": "ethnic embroidery"
+    },
+    {
+      "id": "catalog-5",
+      "description": "Handloom cotton saree",
+      "imageUrl": "https://picsum.photos/seed/105/600/1000",
+      "imageHint": "cotton saree"
+    },
+    {
+      "id": "catalog-6",
+      "description": "Bridal lehenga style saree",
+      "imageUrl": "https://picsum.photos/seed/106/600/800",
+      "imageHint": "bridal saree"
+    },
+    {
+      "id": "insta-1",
+      "description": "Instagram reel cover saree",
+      "imageUrl": "https://picsum.photos/seed/201/400/600",
+      "imageHint": "fashion reel"
+    },
+    {
+      "id": "insta-2",
+      "description": "Instagram reel cover churidar",
+      "imageUrl": "https://picsum.photos/seed/202/400/600",
+      "imageHint": "ethnic reel"
+    },
+    {
+      "id": "insta-3",
+      "description": "Instagram reel cover accessories",
+      "imageUrl": "https://picsum.photos/seed/203/400/600",
+      "imageHint": "jewelry reel"
+    }
+  ]
+}
