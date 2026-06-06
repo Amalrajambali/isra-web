@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -28,41 +27,41 @@ export function DrapeTool() {
   };
 
   return (
-    <Card className="border-primary/20 bg-muted/30 backdrop-blur-sm overflow-hidden">
-      <CardHeader className="bg-primary/5 pb-8 border-b border-primary/10">
-        <CardTitle className="font-headline text-3xl flex items-center gap-3 text-primary">
-          <Sparkles className="h-6 w-6" />
-          AI Personal Drape Tool
+    <Card className="border-border bg-white shadow-sm overflow-hidden">
+      <CardHeader className="border-b border-border/50 pb-6">
+        <CardTitle className="font-headline text-2xl flex items-center gap-2 text-primary">
+          <Sparkles className="h-5 w-5" />
+          AI Style Advisor
         </CardTitle>
-        <CardDescription className="text-muted-foreground text-lg">
-          Describe your occasion, and our AI stylist will recommend the perfect ethnic drape for you.
+        <CardDescription>
+          Personalized recommendations for your special occasions.
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-8">
-        <form onSubmit={handleRecommend} className="flex gap-3 mb-10">
-          <Input
-            placeholder="e.g., A formal wedding ceremony, casual high tea..."
-            value={occasion}
-            onChange={(e) => setOccasion(e.target.value)}
-            className="flex-1 bg-background border-primary/20 focus:border-primary"
-          />
-          <Button type="submit" disabled={loading} className="bg-secondary hover:bg-secondary/90 text-white px-8">
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Style Me"}
-          </Button>
+      <CardContent className="p-6">
+        <form onSubmit={handleRecommend} className="space-y-4 mb-8">
+          <div className="flex gap-2">
+            <Input
+              placeholder="Where are you headed? (e.g. Wedding, Brunch)"
+              value={occasion}
+              onChange={(e) => setOccasion(e.target.value)}
+              className="flex-1"
+            />
+            <Button type="submit" disabled={loading} className="bg-primary hover:bg-primary/90">
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Stylize"}
+            </Button>
+          </div>
         </form>
 
         {recommendations && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+          <div className="space-y-4 animate-fade-in">
             {recommendations.map((rec, idx) => (
-              <div key={idx} className="p-6 rounded-xl border border-primary/20 bg-background/50 hover:bg-background/80 transition-colors">
-                <div className="flex items-center gap-2 mb-3">
-                   <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    <Shirt className="h-5 w-5" />
-                   </div>
-                   <span className="font-headline text-xl text-primary capitalize">{rec.type}</span>
+              <div key={idx} className="p-4 rounded-lg bg-accent/30 border border-primary/10">
+                <div className="flex items-center gap-2 mb-2">
+                   <Shirt className="h-4 w-4 text-primary" />
+                   <span className="font-bold text-sm uppercase tracking-wider text-primary">{rec.type}</span>
                 </div>
-                <h4 className="font-bold text-lg mb-2">{rec.recommendation}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{rec.reason}</p>
+                <h4 className="font-headline text-lg mb-1">{rec.recommendation}</h4>
+                <p className="text-sm text-muted-foreground italic">{rec.reason}</p>
               </div>
             ))}
           </div>

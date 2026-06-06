@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -7,18 +6,18 @@ import { Card } from "@/components/ui/card";
 
 export function CatalogGrid() {
   const items = [
-    { id: "catalog-1", span: "row-span-3" },
-    { id: "catalog-2", span: "row-span-2" },
-    { id: "catalog-3", span: "row-span-3" },
-    { id: "catalog-4", span: "row-span-2" },
-    { id: "catalog-5", span: "row-span-4" },
-    { id: "catalog-6", span: "row-span-2" },
+    { id: "catalog-1" },
+    { id: "catalog-2" },
+    { id: "catalog-3" },
+    { id: "catalog-4" },
+    { id: "catalog-5" },
+    { id: "catalog-6" },
   ];
 
   const getImg = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[100px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {items.map((item, idx) => {
         const imgData = getImg(item.id);
         if (!imgData) return null;
@@ -26,19 +25,23 @@ export function CatalogGrid() {
         return (
           <div
             key={item.id}
-            className={`${item.span} group relative overflow-hidden rounded-xl bg-card border border-primary/10 transition-all duration-700 hover:border-primary/40 opacity-0 animate-fade-in`}
-            style={{ animationDelay: `${idx * 150}ms` }}
+            className="group space-y-4 animate-fade-in"
+            style={{ animationDelay: `${idx * 100}ms` }}
           >
-            <Image
-              src={imgData.imageUrl}
-              alt={imgData.description}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-110"
-              data-ai-hint={imgData.imageHint}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-              <h3 className="font-headline text-xl text-primary">{imgData.description}</h3>
-              <p className="text-sm text-muted-foreground mt-1 uppercase tracking-widest">New Collection</p>
+            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted border border-border/50">
+              <Image
+                src={imgData.imageUrl}
+                alt={imgData.description}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                data-ai-hint={imgData.imageHint}
+              />
+            </div>
+            <div className="space-y-1">
+              <h3 className="font-headline text-xl text-foreground group-hover:text-primary transition-colors">
+                {imgData.description}
+              </h3>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Designer Series</p>
             </div>
           </div>
         );
