@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { patternTrendAnalysisTool, PatternTrendAnalysisToolOutput } from "@/ai/flows/pattern-trend-analysis-tool";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -18,8 +17,13 @@ export function PatternAnalysis() {
     if (!description.trim()) return;
     setLoading(true);
     try {
-      const data = await patternTrendAnalysisTool({ sareePatternDescription: description });
-      setResult(data);
+      const res = await fetch('/api/pattern-trend-analysis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sareePatternDescription: description }),
+      });
+      const data = await res.json();
+      setResult(data ?? null);
     } catch (error) {
       console.error(error);
     } finally {

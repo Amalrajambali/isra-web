@@ -5,7 +5,7 @@ import { PatternAnalysis } from "@/components/PatternAnalysis";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { BoutiqueLocator } from "@/components/BoutiqueLocator";
 import { ContactButtons } from "@/components/ContactButtons";
-import { Separator } from "@/components/ui/separator";
+import { Instagram, Facebook } from "lucide-react";
 
 export default function Home() {
   return (
@@ -28,7 +28,6 @@ export default function Home() {
       <Hero />
 
       <div className="container mx-auto px-6">
-        {/* Catalog Section */}
         <section id="catalog" className="py-24 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <h2 className="font-headline text-4xl md:text-5xl text-foreground">The Signature Series</h2>
@@ -40,7 +39,6 @@ export default function Home() {
           <CatalogGrid />
         </section>
 
-        {/* AI Tools Section */}
         <section id="styling" className="py-24 bg-accent/10 -mx-6 px-6">
           <div className="container mx-auto">
             <div className="text-center mb-16 space-y-4">
@@ -56,47 +54,47 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Instagram Feed Section */}
         <section id="social" className="py-24">
           <InstagramFeed />
         </section>
 
-        {/* Boutique Locator Section */}
         <section id="location" className="py-24">
           <BoutiqueLocator />
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-border py-20">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
-          <div className="space-y-6">
-            <div className="font-headline text-2xl text-primary font-bold tracking-widest">ISRA ETHNIC</div>
-            <p className="text-muted-foreground leading-relaxed italic">
-              "Elegance is the only beauty that never fades." <br />
-              Premium ethnic wear boutique based in Tirur.
-            </p>
-          </div>
-          <div className="space-y-6">
-            <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground">Navigation</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Our Heritage</a></li>
-              <li><a href="#catalog" className="hover:text-primary transition-colors">Catalog</a></li>
-              <li><a href="#styling" className="hover:text-primary transition-colors">AI Advisor</a></li>
-              <li><a href="#location" className="hover:text-primary transition-colors">Store Locator</a></li>
-            </ul>
-          </div>
-          <div className="space-y-6">
-            <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground">Newsletter</h4>
-            <p className="text-sm text-muted-foreground">Stay updated with our latest arrivals and style tips.</p>
-            <div className="flex gap-2">
-              <input type="email" placeholder="Your Email" className="bg-accent/30 border border-border rounded-md px-4 py-2 flex-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
-              <button className="bg-primary text-primary-foreground px-6 py-2 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-colors">Join</button>
+      <footer className="border-t border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,244,233,0.9))]">
+        <div className="container mx-auto px-6 py-5 md:py-6">
+          <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-4 md:gap-6">
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <a
+                href="https://instagram.com/isra.ethnic"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary/5 hover:text-primary"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://facebook.com/israethnic"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary/5 hover:text-primary"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="text-center text-xs text-muted-foreground tracking-[0.2em] uppercase">
+              (c) {new Date().getFullYear()} Isra Ethnic. Crafted for the elegant.
+            </div>
+
+            <div className="hidden md:block text-right text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+              Tirur, Kerala
             </div>
           </div>
-        </div>
-        <div className="container mx-auto px-6 mt-20 pt-8 border-t border-border/50 text-center text-xs text-muted-foreground tracking-widest uppercase">
-          © {new Date().getFullYear()} Isra Ethnic. Crafted for the elegant.
         </div>
       </footer>
 

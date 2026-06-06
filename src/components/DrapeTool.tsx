@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { recommendDrape, RecommendDrapeOutput } from "@/ai/flows/ai-personal-drape-tool";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -17,8 +16,13 @@ export function DrapeTool() {
     if (!occasion.trim()) return;
     setLoading(true);
     try {
-      const result = await recommendDrape({ occasion });
-      setRecommendations(result.recommendations);
+      const res = await fetch('/api/recommend-drape', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ occasion }),
+      });
+      const result = await res.json();
+      setRecommendations(result.recommendations ?? null);
     } catch (error) {
       console.error(error);
     } finally {
@@ -57,8 +61,8 @@ export function DrapeTool() {
             {recommendations.map((rec, idx) => (
               <div key={idx} className="p-4 rounded-lg bg-accent/30 border border-primary/10">
                 <div className="flex items-center gap-2 mb-2">
-                   <Shirt className="h-4 w-4 text-primary" />
-                   <span className="font-bold text-sm uppercase tracking-wider text-primary">{rec.type}</span>
+                  <Shirt className="h-4 w-4 text-primary" />
+                  <span className="font-bold text-sm uppercase tracking-wider text-primary">{rec.type}</span>
                 </div>
                 <h4 className="font-headline text-lg mb-1">{rec.recommendation}</h4>
                 <p className="text-sm text-muted-foreground italic">{rec.reason}</p>

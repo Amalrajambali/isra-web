@@ -1,51 +1,87 @@
-'use server';
-/**
- * @fileOverview An AI-powered styling tool that recommends suitable saree fabrics or churidar cuts based on an occasion.
- *
- * - recommendDrape - A function that handles the styling recommendation process.
- * - RecommendDrapeInput - The input type for the recommendDrape function.
- * - RecommendDrapeOutput - The return type for the recommendDrape function.
- */
+"use server";
 
-import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+export type RecommendDrapeInput = {
+  occasion: string;
+};
 
-const RecommendDrapeInputSchema = z.object({
-  occasion: z.string().describe('The occasion for which the user needs a styling recommendation (e.g., "wedding," "formal event," "casual outing").'),
-});
-export type RecommendDrapeInput = z.infer<typeof RecommendDrapeInputSchema>;
+export type RecommendDrapeOutput = {
+  recommendations: Array<{
+    type: "saree" | "churidar";
+    recommendation: string;
+    reason: string;
+  }>;
+};
 
-const RecommendDrapeOutputSchema = z.object({
-  recommendations: z.array(z.object({
-    type: z.enum(['saree', 'churidar']).describe('The type of garment recommended (saree or churidar).'),
-    recommendation: z.string().describe('A description of the recommended fabric or cut.'),
-    reason: z.string().describe('The reason why this recommendation is suitable for the given occasion.'),
-  })).describe('A list of styling recommendations for the occasion.'),
-});
-export type RecommendDrapeOutput = z.infer<typeof RecommendDrapeOutputSchema>;
-
-export async function recommendDrape(input: RecommendDrapeInput): Promise<RecommendDrapeOutput> {
-  return aiPersonalDrapeToolFlow(input);
+function normalize(text: string) {
+  return text.trim().toLowerCase();
 }
 
-const prompt = ai.definePrompt({
-  name: 'personalDrapeToolPrompt',
-  input: { schema: RecommendDrapeInputSchema },
-  output: { schema: RecommendDrapeOutputSchema },
-  prompt: `You are an expert stylist for "ISRA churidars and sarees". Your task is to recommend suitable saree fabrics or churidar cuts based on the occasion provided by the customer.
-Consider the shop specializes in churidars and sarees and aims for attractive and simple yet elegant styles.
+export async function recommendDrape(input: RecommendDrapeInput): Promise<RecommendDrapeOutput> {
+  const occasion = normalize(input.occasion);
 
-Given the occasion: {{{occasion}}}`
-});
-
-const aiPersonalDrapeToolFlow = ai.defineFlow(
-  {
-    name: 'aiPersonalDrapeToolFlow',
-    inputSchema: RecommendDrapeInputSchema,
-    outputSchema: RecommendDrapeOutputSchema,
-  },
-  async (input) => {
-    const { output } = await prompt(input);
-    return output!;
+  if (!occasion) {
+    return {
+      recommendations: [
+        {
+          type: "saree",
+          recommendation: "Soft silk saree with a light zari border",
+          reason: "A versatile choice that works for many celebrations while staying elegant.",
+        },
+        {
+          type: "churidar",
+          recommendation: "Cotton-silk churidar with a clean straight cut",
+          reason: "Comfortable for all-day wear and easy to dress up with accessories.",
+        },
+      ],
+    };
   }
-);
+
+  if (/(wedding|marriage|reception|engagement|party|festive|festival|celebration)/.test(occasion)) {
+    return {
+      recommendations: [
+        {
+          type: "saree",
+          recommendation: "Banarasi, tissue, or rich silk saree with traditional borders",
+          reason: "These fabrics feel luxurious and photograph beautifully for formal celebrations.",
+        },
+        {
+          type: "churidar",
+          recommendation: "Embroidered silk blend churidar with a tailored silhouette",
+          reason: "A refined option for guests who want a polished look without heavy draping.",
+        },
+      ],
+    };
+  }
+
+  if (/(office|formal|meeting|conference|interview|work)/.test(occasion)) {
+    return {
+      recommendations: [
+        {
+          type: "saree",
+          recommendation: "Matte silk or cotton-silk saree in a muted jewel tone",
+          reason: "It looks professional while still feeling graceful and boutique-ready.",
+        },
+        {
+          type: "churidar",
+          recommendation: "Straight-cut churidar in solid tones with minimal embroidery",
+          reason: "Clean lines keep the outfit smart, comfortable, and easy to wear all day.",
+        },
+      ],
+    };
+  }
+
+  return {
+    recommendations: [
+      {
+        type: "saree",
+        recommendation: "Lightweight printed saree with subtle zari accents",
+        reason: "This is easy to wear for casual outings while still looking polished.",
+      },
+      {
+        type: "churidar",
+        recommendation: "Breathable cotton or linen churidar in a relaxed elegant cut",
+        reason: "A comfortable everyday option that still feels thoughtfully styled.",
+      },
+    ],
+  };
+}
