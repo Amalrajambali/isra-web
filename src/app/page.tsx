@@ -9,7 +9,7 @@ import { Instagram, Facebook } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground pt-20">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-md border-b border-border/30">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">

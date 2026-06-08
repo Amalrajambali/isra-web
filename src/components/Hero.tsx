@@ -19,19 +19,27 @@ export function Hero() {
         }
     };
     return (
-        <section className="relative h-[90vh] w-full flex items-center overflow-hidden bg-[#f6eee3]">
+        <section className="relative min-h-[calc(100vh-5rem)] w-full flex items-center overflow-hidden bg-[#f6eee3]">
+            <Image
+                src="/hero-product-mobile.png"
+                alt="Hero background for Isra Ethnic mobile"
+                fill
+                priority
+                className="object-cover pointer-events-none select-none sm:hidden"
+                style={{ objectPosition: "50% 50%" }}
+            />
             <Image
                 src="/hero-product.png"
                 alt="Hero background for Isra Ethnic"
                 fill
                 priority
-                className="object-cover pointer-events-none select-none"
+                className="object-cover pointer-events-none select-none hidden sm:block"
                 style={{ objectPosition: "72% 12%" }}
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#f8f1e6] via-[#f8f1e6]/70 to-transparent" />
 
-            <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 items-center relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 items-center relative z-10 py-10 sm:py-0">
                 <div className="space-y-8 animate-fade-in">
                     <div className="space-y-4">
                         <div className="flex items-center gap-6">
