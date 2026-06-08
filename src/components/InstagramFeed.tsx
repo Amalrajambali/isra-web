@@ -16,7 +16,7 @@ export function InstagramFeed() {
           <h2 className="font-headline text-3xl">Trending Reels</h2>
         </div>
         <a
-          href="https://instagram.com/isra.ethnic"
+          href="https://www.instagram.com/isra.ethnic?igsh=dnhtNHQ5dGlwdmcw"
           target="_blank"
           className="text-primary hover:underline font-bold tracking-widest text-sm uppercase"
         >

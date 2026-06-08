@@ -68,7 +68,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-4 md:gap-6">
             <div className="flex items-center justify-center md:justify-start gap-3">
               <a
-                href="https://instagram.com/isra.ethnic"
+                href="https://www.instagram.com/isra.ethnic?igsh=dnhtNHQ5dGlwdmcw"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
@@ -77,7 +77,7 @@ export default function Home() {
                 <Instagram className="h-4 w-4" />
               </a>
               <a
-                href="https://facebook.com/israethnic"
+                href="https://www.facebook.com/share/1BMiwAMz8d/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
