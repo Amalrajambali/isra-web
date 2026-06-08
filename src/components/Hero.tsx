@@ -50,7 +50,7 @@ export function Hero() {
               Experience the finest collection of luxury sarees and designer churidars, curated for the modern woman who values tradition.
             </p>
             <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">
-              ISRA Churidars • Churidars  • Ethnic Wear
+              ISRA Churidars • Sarees  • Ethnic Wear
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
