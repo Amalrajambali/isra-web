@@ -58,14 +58,13 @@ export function BoutiqueLocator() {
 
       <div className="relative h-[450px] w-full rounded-3xl overflow-hidden border border-primary/20 shadow-2xl">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15672.43475133642!2d75.9220!3d10.9080!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7b6938a4d1f2b%3A0x67c2957753e80!2sTirur%2C+Kerala!5e0!3m2!1sen!2sin!4v1700000000000"
+          src="https://maps.google.com/maps?q=Isra%20Churidars%20%26%20Sarees%20Tirur&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
         <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-primary/20"></div>
       </div>
     </div>

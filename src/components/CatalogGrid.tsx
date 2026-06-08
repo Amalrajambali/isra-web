@@ -2,29 +2,16 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/app/lib/placeholder-images";
-import { Card } from "@/components/ui/card";
 
 export function CatalogGrid() {
-  const items = [
-    { id: "catalog-1" },
-    { id: "catalog-2" },
-    { id: "catalog-3" },
-    { id: "catalog-4" },
-    { id: "catalog-5" },
-    { id: "catalog-6" },
-  ];
-
-  const getImg = (id: string) => PlaceHolderImages.find(p => p.id === id);
+  const catalogImages = PlaceHolderImages.filter((p) => p.id.startsWith("catalog-"));
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {items.map((item, idx) => {
-        const imgData = getImg(item.id);
-        if (!imgData) return null;
-
+      {catalogImages.map((imgData, idx) => {
         return (
           <div
-            key={item.id}
+            key={imgData.id}
             className="group space-y-4 animate-fade-in"
             style={{ animationDelay: `${idx * 100}ms` }}
           >
