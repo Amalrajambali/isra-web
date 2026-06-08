@@ -34,11 +34,11 @@ export function PatternAnalysis() {
   return (
     <Card className="border-border bg-white shadow-sm">
       <CardHeader className="border-b border-border/50 pb-6">
-        <CardTitle className="font-headline text-2xl flex items-center gap-2 text-primary">
+        <CardTitle className="font-headline text-lg sm:text-2xl flex items-center gap-2 text-primary">
           <Palette className="h-5 w-5" />
           Pattern Consultant
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-xs sm:text-sm">
           Expert pairing advice for your unique saree patterns.
         </CardDescription>
       </CardHeader>

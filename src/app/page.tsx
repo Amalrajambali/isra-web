@@ -27,38 +27,38 @@ export default function Home() {
 
       <Hero />
 
-      <div className="container mx-auto px-6">
-        <section id="catalog" className="py-24 space-y-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <section id="catalog" className="py-12 sm:py-24 space-y-8 sm:space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <h2 className="font-headline text-4xl md:text-5xl text-foreground">The Signature Series</h2>
+            <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl text-foreground">The Signature Series</h2>
             <div className="h-1 w-20 bg-primary mx-auto" />
-            <p className="text-muted-foreground text-lg italic font-light">
+            <p className="text-muted-foreground text-base sm:text-lg italic font-light">
               Handpicked pieces that blend heritage with modern sophistication.
             </p>
           </div>
           <CatalogGrid />
         </section>
 
-        <section id="styling" className="py-24 bg-accent/10 -mx-6 px-6">
+        <section id="styling" className="py-12 sm:py-24 bg-accent/10 -mx-4 sm:-mx-6 px-4 sm:px-6">
           <div className="container mx-auto">
-            <div className="text-center mb-16 space-y-4">
-              <h2 className="font-headline text-4xl text-foreground">Intelligent Styling</h2>
-              <p className="text-muted-foreground max-w-lg mx-auto">
+            <div className="text-center mb-8 sm:mb-16 space-y-4">
+              <h2 className="font-headline text-3xl sm:text-4xl text-foreground">Intelligent Styling</h2>
+              <p className="text-muted-foreground max-w-lg mx-auto text-base sm:text-base">
                 Let our AI consultant help you find the perfect drape and accessories for any occasion.
               </p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
               <DrapeTool />
               <PatternAnalysis />
             </div>
           </div>
         </section>
 
-        <section id="social" className="py-24">
+        <section id="social" className="py-12 sm:py-24">
           <InstagramFeed />
         </section>
 
-        <section id="location" className="py-24">
+        <section id="location" className="py-12 sm:py-24">
           <BoutiqueLocator />
         </section>
       </div>

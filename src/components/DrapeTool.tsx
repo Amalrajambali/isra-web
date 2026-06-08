@@ -33,11 +33,11 @@ export function DrapeTool() {
   return (
     <Card className="border-border bg-white shadow-sm overflow-hidden">
       <CardHeader className="border-b border-border/50 pb-6">
-        <CardTitle className="font-headline text-2xl flex items-center gap-2 text-primary">
+        <CardTitle className="font-headline text-lg sm:text-2xl flex items-center gap-2 text-primary">
           <Sparkles className="h-5 w-5" />
           AI Style Advisor
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-xs sm:text-sm">
           Personalized recommendations for your special occasions.
         </CardDescription>
       </CardHeader>

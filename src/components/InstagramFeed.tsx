@@ -9,21 +9,21 @@ export function InstagramFeed() {
   const instaImages = PlaceHolderImages.filter(p => p.id.startsWith('insta-'));
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center gap-3">
-          <Instagram className="h-8 w-8 text-primary" />
-          <h2 className="font-headline text-3xl">Trending Reels</h2>
+          <Instagram className="h-6 sm:h-8 w-6 sm:w-8 text-primary" />
+          <h2 className="font-headline text-2xl sm:text-3xl">Trending Reels</h2>
         </div>
         <a
           href="https://www.instagram.com/isra.ethnic?igsh=dnhtNHQ5dGlwdmcw"
           target="_blank"
-          className="text-primary hover:underline font-bold tracking-widest text-sm uppercase"
+          className="text-primary hover:underline font-bold tracking-widest text-xs sm:text-sm uppercase inline-block sm:whitespace-nowrap"
         >
           Follow @isra.ethnic
         </a>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {instaImages.map((img, idx) => (
           <div
             key={img.id}

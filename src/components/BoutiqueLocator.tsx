@@ -6,11 +6,11 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function BoutiqueLocator() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
       <div className="space-y-8">
         <div>
-          <h2 className="font-headline text-4xl mb-4 text-primary">Visit Us</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+          <h2 className="font-headline text-3xl sm:text-4xl mb-4 text-primary">Visit Us</h2>
+          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
             Experience the luxury of our collections in person. Our boutique in Tirur offers a curated selection of sarees and churidars with personalized styling assistance.
           </p>
         </div>
@@ -56,7 +56,7 @@ export function BoutiqueLocator() {
         </button>
       </div>
 
-      <div className="relative h-[450px] w-full rounded-3xl overflow-hidden border border-primary/20 shadow-2xl">
+      <div className="relative h-[300px] sm:h-[450px] w-full rounded-3xl overflow-hidden border border-primary/20 shadow-2xl">
         <iframe
           src="https://maps.google.com/maps?q=Isra%20Churidars%20%26%20Sarees%20Tirur&output=embed"
           width="100%"
