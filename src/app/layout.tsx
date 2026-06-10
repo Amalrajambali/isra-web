@@ -2,6 +2,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: 'Isra Churidars & Sarees | Isra Ethnic',
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background text-foreground min-h-screen">
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
