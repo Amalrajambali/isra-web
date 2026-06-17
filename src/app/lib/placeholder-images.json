@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -45,21 +44,21 @@
     },
     {
       "id": "insta-1",
-      "description": "Pink designer churidar set",
-      "imageUrl": "/1000412881.png",
-      "imageHint": "pink churidar"
+      "description": "Pastel embroidered churidar set",
+      "imageHint": "pastel churidar",
+      "reelUrl": "https://www.instagram.com/reel/DZpjkFCpvWR/"
     },
     {
       "id": "insta-2",
-      "description": "Navy floral set",
-      "imageUrl": "/1000409577.png",
-      "imageHint": "navy floral set"
+      "description": "Designer pleated churidar set",
+      "imageHint": "designer churidar",
+      "reelUrl": "https://www.instagram.com/reel/DZm2_n9JPOX/"
     },
     {
       "id": "insta-3",
-      "description": "Purple floral set",
-      "imageUrl": "/1000415635.png",
-      "imageHint": "purple floral set"
+      "description": "Pink embroidered churidar set",
+      "imageHint": "pink churidar",
+      "reelUrl": "https://www.instagram.com/reel/DZkd5H6J9dS/"
     }
   ]
 }

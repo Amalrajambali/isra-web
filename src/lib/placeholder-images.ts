@@ -3,8 +3,9 @@ import data from '@/app/lib/placeholder-images.json';
 export type ImagePlaceholder = {
   id: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
   imageHint: string;
+  reelUrl?: string;
 };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;

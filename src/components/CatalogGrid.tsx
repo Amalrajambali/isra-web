@@ -40,7 +40,7 @@ export function CatalogGrid() {
             {/* Image with overlay */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted border border-border/50">
               <Image
-                src={imgData.imageUrl}
+                src={imgData.imageUrl || ""}
                 alt={imgData.description}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
