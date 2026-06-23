@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -6,7 +5,13 @@ import { PlaceHolderImages } from "@/app/lib/placeholder-images";
 import { Instagram, Play } from "lucide-react";
 
 export function InstagramFeed() {
-  const instaImages = PlaceHolderImages.filter(p => p.id.startsWith('insta-'));
+  const instaImages = PlaceHolderImages.filter((p) => p.id.startsWith("insta-"));
+
+  const buildInstagramEmbedUrl = (reelUrl: string) => {
+    const url = new URL(reelUrl);
+    const path = url.pathname.replace(/\/+$/, "");
+    return `${url.origin}${path}/embed/`;
+  };
 
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -24,9 +29,9 @@ export function InstagramFeed() {
         </a>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-        {instaImages.map((img, idx) => {
+        {instaImages.map((img) => {
           if (img.reelUrl) {
-            const embedUrl = img.reelUrl.endsWith('/') ? `${img.reelUrl}embed/` : `${img.reelUrl}/embed/`;
+            const embedUrl = buildInstagramEmbedUrl(img.reelUrl);
             return (
               <div
                 key={img.id}
