@@ -83,6 +83,36 @@
       "description": "Purple embroidered churidar set",
       "imageHint": "purple churidar",
       "reelUrl": "https://www.instagram.com/reel/DZuwE6eJa9k/?igsh=MWl2NWplNHc0bnIwMQ=="
+    },
+    {
+      "id": "insta-8",
+      "description": "Grey embroidered churidar set with matching dupatta",
+      "imageHint": "grey churidar",
+      "reelUrl": "PASTE_GREY_REEL_LINK_HERE"
+    },
+    {
+      "id": "insta-9",
+      "description": "Olive green embroidered churidar set",
+      "imageHint": "green churidar",
+      "reelUrl": "PASTE_GREEN_REEL_LINK_HERE"
+    },
+    {
+      "id": "insta-10",
+      "description": "White printed embroidered churidar set with dupatta",
+      "imageHint": "white churidar",
+      "reelUrl": "PASTE_WHITE_REEL_LINK_HERE"
+    },
+    {
+      "id": "insta-11",
+      "description": "Classic cream co-ord set",
+      "imageHint": "cream churidar",
+      "reelUrl": "PASTE_CREAM_REEL_LINK_HERE"
+    },
+    {
+      "id": "insta-12",
+      "description": "Elegant red cotton embroidered suit set",
+      "imageHint": "red churidar",
+      "reelUrl": "PASTE_RED_REEL_LINK_HERE"
     }
   ]
 }
