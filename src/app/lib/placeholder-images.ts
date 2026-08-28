@@ -6,6 +6,7 @@ export type ImagePlaceholder = {
   imageUrl?: string;
   imageHint: string;
   reelUrl?: string;
+  price?: string | number | null;
 };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data?.placeholderImages || [];

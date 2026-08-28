@@ -1,9 +1,18 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/app/lib/placeholder-images";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WHATSAPP_NUMBER = "918113081120";
+const ITEMS_PER_PAGE = 8;
+
+function formatPrice(price?: string | number | null) {
+  if (!price) return "Price on request";
+  const value = String(price).trim();
+  return value.startsWith("Rs.") ? value : `Rs.${value}`;
+}
 
 function WhatsAppIcon() {
   return (
@@ -19,18 +28,37 @@ function WhatsAppIcon() {
 }
 
 export function CatalogGrid() {
-  const catalogImages = PlaceHolderImages.filter((p) => p.id.startsWith("catalog-"));
+  const [currentPage, setCurrentPage] = useState(1);
+  const catalogImages = useMemo(() => {
+    return PlaceHolderImages.filter((p) => p.id.startsWith("catalog-")).sort((a, b) => {
+      const aNumber = Number.parseInt(a.id.replace("catalog-", ""), 10);
+      const bNumber = Number.parseInt(b.id.replace("catalog-", ""), 10);
 
-  const handleWhatsApp = (dressName: string) => {
+      if (Number.isNaN(aNumber) || Number.isNaN(bNumber)) {
+        return b.id.localeCompare(a.id);
+      }
+
+      return bNumber - aNumber;
+    });
+  }, []);
+
+  const totalPages = Math.ceil(catalogImages.length / ITEMS_PER_PAGE);
+  const paginatedCatalogImages = catalogImages.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handleWhatsApp = (dressName: string, price?: string | number | null) => {
     const message = encodeURIComponent(
-      `👗 Interested in this design!\n\n*${dressName}*\n\nCan I know the price and available sizes?\n\n🛍️ ISRA Ethnic - Tirur, Kerala`
+      `👗 Interested in this design!\n\n*${dressName}*${price ? `\nPrice: ${formatPrice(price)}` : ""}\n\nCan you confirm available sizes?\n\n🛍️ ISRA Ethnic - Tirur, Kerala`
     );
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {catalogImages.map((imgData, idx) => {
+    <div className="space-y-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {paginatedCatalogImages.map((imgData, idx) => {
         return (
           <div
             key={imgData.id}
@@ -67,7 +95,7 @@ export function CatalogGrid() {
                     Interested in this design?
                   </p>
                   <button
-                    onClick={() => handleWhatsApp(imgData.description)}
+                    onClick={() => handleWhatsApp(imgData.description, imgData.price)}
                     className="
                       flex items-center gap-2.5 w-full justify-center
                       px-4 py-2.5 rounded
@@ -84,7 +112,7 @@ export function CatalogGrid() {
                     }}
                   >
                     <WhatsAppIcon />
-                    View Price &amp; Sizes
+                    {imgData.price ? "Order Now & Check Sizes" : "View Price & Sizes"}
                   </button>
                 </div>
               </div>
@@ -95,11 +123,43 @@ export function CatalogGrid() {
               <h3 className="font-headline text-xl text-foreground group-hover:text-primary transition-colors">
                 {imgData.description}
               </h3>
-              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Designer Series</p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Designer Series</p>
+                <p className="text-base font-semibold text-primary">
+                  {formatPrice(imgData.price)}
+                </p>
+              </div>
             </div>
           </div>
         );
-      })}
+        })}
+      </div>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+            disabled={currentPage === 1}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Prev
+          </button>
+          <span className="text-sm font-medium text-muted-foreground">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            type="button"
+            onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+            disabled={currentPage === totalPages}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Next
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

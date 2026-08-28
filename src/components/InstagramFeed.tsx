@@ -1,11 +1,32 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/app/lib/placeholder-images";
-import { Instagram, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Instagram, Play } from "lucide-react";
+
+const ITEMS_PER_PAGE = 8;
 
 export function InstagramFeed() {
-  const instaImages = PlaceHolderImages.filter((p) => p.id.startsWith("insta-"));
+  const [currentPage, setCurrentPage] = useState(1);
+  const instaImages = useMemo(() => {
+    return PlaceHolderImages.filter((p) => p.id.startsWith("insta-")).sort((a, b) => {
+      const aNumber = Number.parseInt(a.id.replace("insta-", ""), 10);
+      const bNumber = Number.parseInt(b.id.replace("insta-", ""), 10);
+
+      if (Number.isNaN(aNumber) || Number.isNaN(bNumber)) {
+        return b.id.localeCompare(a.id);
+      }
+
+      return bNumber - aNumber;
+    });
+  }, []);
+
+  const totalPages = Math.ceil(instaImages.length / ITEMS_PER_PAGE);
+  const paginatedInstaImages = instaImages.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const buildInstagramEmbedUrl = (reelUrl: string) => {
     const url = new URL(reelUrl);
@@ -29,7 +50,7 @@ export function InstagramFeed() {
         </a>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-        {instaImages.map((img) => {
+        {paginatedInstaImages.map((img) => {
           if (img.reelUrl) {
             const embedUrl = buildInstagramEmbedUrl(img.reelUrl);
             return (
@@ -74,6 +95,32 @@ export function InstagramFeed() {
           );
         })}
       </div>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-3 pt-2">
+          <button
+            type="button"
+            onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+            disabled={currentPage === 1}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Prev
+          </button>
+          <span className="text-sm font-medium text-muted-foreground">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            type="button"
+            onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+            disabled={currentPage === totalPages}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Next
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

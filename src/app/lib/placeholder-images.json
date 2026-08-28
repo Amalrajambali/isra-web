@@ -10,37 +10,43 @@
       "id": "catalog-2",
       "description": "Mustard floral churidar set",
       "imageUrl": "/1000409657.png",
-      "imageHint": "mustard churidar"
+      "imageHint": "mustard churidar",
+      "price": 2499
     },
     {
       "id": "catalog-3",
       "description": "Rust and gold silk saree",
       "imageUrl": "/1000409660.png",
-      "imageHint": "silk saree"
+      "imageHint": "silk saree",
+      "price": null
     },
     {
       "id": "catalog-4",
       "description": "Purple designer silk saree",
       "imageUrl": "/1000409704.png",
-      "imageHint": "purple saree"
+      "imageHint": "purple saree",
+      "price": null
     },
     {
       "id": "catalog-5",
       "description": "Navy embroidered kurta set",
       "imageUrl": "/1000409765.png",
-      "imageHint": "navy kurta"
+      "imageHint": "navy kurta",
+      "price": null
     },
     {
       "id": "catalog-6",
       "description": "Mint floral churidar set",
       "imageUrl": "/1000410718%20(1).png",
-      "imageHint": "mint churidar"
+      "imageHint": "mint churidar",
+      "price": null
     },
     {
       "id": "catalog-8",
       "description": "Beige lace detailed kurta set",
       "imageUrl": "/1000409584.png",
-      "imageHint": "beige lace kurta"
+      "imageHint": "beige lace kurta",
+      "price": null
     },
     {
       "id": "insta-1",
