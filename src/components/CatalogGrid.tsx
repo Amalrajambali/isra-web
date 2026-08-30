@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/app/lib/placeholder-images";
+import { getCatalogItems } from "@/lib/catalog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WHATSAPP_NUMBER = "918113081120";
 const ITEMS_PER_PAGE = 8;
+const fallbackCatalog = PlaceHolderImages.filter((item) => item.id.startsWith("catalog-"));
 
 function formatPrice(price?: string | number | null) {
   if (!price) return "Price on request";
@@ -29,8 +31,16 @@ function WhatsAppIcon() {
 
 export function CatalogGrid() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [catalogSource, setCatalogSource] = useState(fallbackCatalog);
+
+  useEffect(() => {
+    getCatalogItems()
+      .then(setCatalogSource)
+      .catch(() => setCatalogSource(fallbackCatalog));
+  }, []);
+
   const catalogImages = useMemo(() => {
-    return PlaceHolderImages.filter((p) => p.id.startsWith("catalog-")).sort((a, b) => {
+    return [...catalogSource].sort((a, b) => {
       const aNumber = Number.parseInt(a.id.replace("catalog-", ""), 10);
       const bNumber = Number.parseInt(b.id.replace("catalog-", ""), 10);
 
@@ -40,7 +50,7 @@ export function CatalogGrid() {
 
       return bNumber - aNumber;
     });
-  }, []);
+  }, [catalogSource]);
 
   const totalPages = Math.ceil(catalogImages.length / ITEMS_PER_PAGE);
   const paginatedCatalogImages = catalogImages.slice(
@@ -67,13 +77,21 @@ export function CatalogGrid() {
           >
             {/* Image with overlay */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted border border-border/50">
-              <Image
-                src={imgData.imageUrl || ""}
-                alt={imgData.description}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                data-ai-hint={imgData.imageHint}
-              />
+              {imgData.imageUrl?.startsWith("http") ? (
+                <img
+                  src={imgData.imageUrl}
+                  alt={imgData.description}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <Image
+                  src={imgData.imageUrl || ""}
+                  alt={imgData.description}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  data-ai-hint={imgData.imageHint}
+                />
+              )}
 
               {/* Hover overlay — slides up from bottom */}
               <div className="absolute inset-0 flex flex-col justify-end pointer-events-none">
