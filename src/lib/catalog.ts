@@ -1,8 +1,5 @@
 import { PlaceHolderImages, type ImagePlaceholder } from "@/app/lib/placeholder-images";
 
-const SHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID;
-const SHEET_GID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_GID || "0";
-
 function parseCsvRow(row: string) {
   const values: string[] = [];
   let value = "";
@@ -29,7 +26,7 @@ function parseCsvRow(row: string) {
   return values;
 }
 
-function parseGoogleSheet(csv: string): ImagePlaceholder[] {
+export function parseGoogleSheet(csv: string): ImagePlaceholder[] {
   const rows = csv.replace(/^\uFEFF/, "").split(/\r?\n/).filter(Boolean).map(parseCsvRow);
   if (rows.length < 2) return [];
 
@@ -65,13 +62,7 @@ export function normalizeDriveImageUrl(url: string) {
 }
 
 export async function getCatalogItems() {
-  if (!SHEET_ID) return PlaceHolderImages.filter((item) => item.id.startsWith("catalog-"));
-
-  const response = await fetch(
-    `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`,
-    { cache: "no-store" }
-  );
-
-  if (!response.ok) throw new Error("Google Sheet could not be loaded");
-  return parseGoogleSheet(await response.text());
+  const response = await fetch("/api/catalog", { cache: "no-store" });
+  if (!response.ok) throw new Error("Catalog could not be loaded");
+  return (await response.json()) as ImagePlaceholder[];
 }

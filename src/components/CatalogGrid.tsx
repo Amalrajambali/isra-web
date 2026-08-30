@@ -69,52 +69,52 @@ export function CatalogGrid() {
     <div className="space-y-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {paginatedCatalogImages.map((imgData, idx) => {
-        return (
-          <div
-            key={imgData.id}
-            className="group space-y-4 animate-fade-in"
-            style={{ animationDelay: `${idx * 100}ms` }}
-          >
-            {/* Image with overlay */}
-            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted border border-border/50">
-              {imgData.imageUrl?.startsWith("http") ? (
-                <img
-                  src={imgData.imageUrl}
-                  alt={imgData.description}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              ) : (
-                <Image
-                  src={imgData.imageUrl || ""}
-                  alt={imgData.description}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  data-ai-hint={imgData.imageHint}
-                />
-              )}
+          return (
+            <div
+              key={imgData.id}
+              className="group space-y-4 animate-fade-in"
+              style={{ animationDelay: `${idx * 100}ms` }}
+            >
+              {/* Image with overlay */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted border border-border/50">
+                {imgData.imageUrl?.startsWith("http") ? (
+                  <img
+                    src={imgData.imageUrl}
+                    alt={imgData.description}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <Image
+                    src={imgData.imageUrl || ""}
+                    alt={imgData.description}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    data-ai-hint={imgData.imageHint}
+                  />
+                )}
 
-              {/* Hover overlay — slides up from bottom */}
-              <div className="absolute inset-0 flex flex-col justify-end pointer-events-none">
-                <div
-                  className="
+                {/* Hover overlay — slides up from bottom */}
+                <div className="absolute inset-0 flex flex-col justify-end pointer-events-none">
+                  <div
+                    className="
                     translate-y-full group-hover:translate-y-0
                     transition-transform duration-500 ease-in-out
                     pointer-events-auto
                   "
-                  style={{
-                    background: "linear-gradient(to top, rgba(26,18,10,0.92) 0%, rgba(26,18,10,0.6) 60%, transparent 100%)",
-                    padding: "2rem 1.25rem 1.25rem",
-                  }}
-                >
-                  <p
-                    className="text-[11px] uppercase tracking-[0.2em] font-semibold mb-2"
-                    style={{ color: "hsl(39 48% 75%)" }}
+                    style={{
+                      background: "linear-gradient(to top, rgba(26,18,10,0.92) 0%, rgba(26,18,10,0.6) 60%, transparent 100%)",
+                      padding: "2rem 1.25rem 1.25rem",
+                    }}
                   >
-                    Interested in this design?
-                  </p>
-                  <button
-                    onClick={() => handleWhatsApp(imgData.description, imgData.price)}
-                    className="
+                    <p
+                      className="text-[11px] uppercase tracking-[0.2em] font-semibold mb-2"
+                      style={{ color: "hsl(39 48% 75%)" }}
+                    >
+                      Interested in this design?
+                    </p>
+                    <button
+                      onClick={() => handleWhatsApp(imgData.description, imgData.price)}
+                      className="
                       flex items-center gap-2.5 w-full justify-center
                       px-4 py-2.5 rounded
                       text-sm font-semibold tracking-wide
@@ -122,34 +122,34 @@ export function CatalogGrid() {
                       active:scale-95
                       border
                     "
-                    style={{
-                      background: "linear-gradient(135deg, hsl(39 48% 56%), hsl(39 48% 44%))",
-                      color: "hsl(36 33% 98%)",
-                      borderColor: "hsl(39 48% 65% / 0.4)",
-                      boxShadow: "0 2px 12px hsl(39 48% 40% / 0.35)",
-                    }}
-                  >
-                    <WhatsAppIcon />
-                    {imgData.price ? "Order Now & Check Sizes" : "View Price & Sizes"}
-                  </button>
+                      style={{
+                        background: "linear-gradient(135deg, hsl(39 48% 56%), hsl(39 48% 44%))",
+                        color: "hsl(36 33% 98%)",
+                        borderColor: "hsl(39 48% 65% / 0.4)",
+                        boxShadow: "0 2px 12px hsl(39 48% 40% / 0.35)",
+                      }}
+                    >
+                      <WhatsAppIcon />
+                      {imgData.price ? "Order Now & Check Sizes" : "View Price & Sizes"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card footer — clean, no button clutter */}
+              <div className="space-y-1">
+                <h3 className="font-headline text-xl text-foreground group-hover:text-primary transition-colors">
+                  {imgData.description}
+                </h3>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Designer Series</p>
+                  <p className="text-base font-semibold text-primary">
+                    {formatPrice(imgData.price)}
+                  </p>
                 </div>
               </div>
             </div>
-
-            {/* Card footer — clean, no button clutter */}
-            <div className="space-y-1">
-              <h3 className="font-headline text-xl text-foreground group-hover:text-primary transition-colors">
-                {imgData.description}
-              </h3>
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Designer Series</p>
-                <p className="text-base font-semibold text-primary">
-                  {formatPrice(imgData.price)}
-                </p>
-              </div>
-            </div>
-          </div>
-        );
+          );
         })}
       </div>
 
